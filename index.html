@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh; /* Adjusted min-height for small content */
+      position: relative;
+    }
+
+    .avatar {
+      width: 150px;
+      height: auto;
+      border-radius: 50%;
+      border: 4px solid #ff69b4;
+      margin-bottom: 5px;
+    }
+
+    .page-heading {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 48px;
+      font-weight: 700;
+      color: #333;
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    .entry-box {
+      text-align: center;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      border: 2px solid #ff69b4;
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      max-width: 400px;
+    }
+
+    .entry-box:hover {
+      transform: scale(1.02);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .entry-caption {
+      font-size: 20px;
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    .entry-input {
+      width: 100%;
+      padding: 12px;
+      box-sizing: border-box;
+      border: none;
+      border-radius: 6px;
+      background-color: #ffe4e1;
+      font-size: 16px;
+      margin-bottom: 15px;
+      transition: box-shadow 0.3s ease-in-out;
+    }
+
+    .entry-input:focus {
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .entry-button {
+      background-color: #ff69b4;
+      color: #fff;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 18px;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    .entry-button:hover {
+      background-color: #d24d8b;
+    }
+
+    .info-banner {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      font-size: 16px;
+    }
+
+    @media only screen and (max-width: 600px) {
+      .entry-box {
+        padding: 15px;
+      }
+    }
+  </style>
+  <title>Love Code Entry</title>
+</head>
+<body>
+  <img src="./Library/system/avatar.jpg" alt="Avatar" class="avatar">
+
+  <div class="page-heading">Login to our memories</div>
+
+  <div class="entry-box">
+    <div class="entry-caption">Enter our love code</div>
+    <input type="text" class="entry-input" id="loveCodeInput" placeholder="Love code...">
+    <button class="entry-button" onclick="validateLoveCode()">Submit</button>
+  </div>
+
+  <div class="info-banner">
+    Developed with love by Quantumsoft
+  </div>
+
+  <script>
+    function validateLoveCode() {
+      var enteredCode = document.getElementById("loveCodeInput").value;
+      var targetDate = new Date("2023-10-14");
+      var enteredDate = new Date(enteredCode);
+
+      if (!isNaN(enteredDate) && enteredDate.getTime() === targetDate.getTime()) {
+        window.location.href = "home.html";
+      } else {
+        alert("Invalid code, please try again!");
+      }
+    }
+
+    function handleKeyPress(event) {
+      if (event.key === "Enter") {
+        validateLoveCode();
+      }
+    }
+
+    document.getElementById("loveCodeInput").addEventListener("keydown", handleKeyPress);
+  </script>
+</body>
+</html>
